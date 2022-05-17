@@ -1,7 +1,7 @@
 // require built-in modules
 const http = require("http"); // CommonJS Module pattern
 const fs = require("fs");
-const mime = require('mime-types');
+const mime = require("mime-types");
 
 let lookup = mime.lookup; //alias for mime.lookup
 
