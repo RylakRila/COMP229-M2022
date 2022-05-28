@@ -1,0 +1,11 @@
+{
+  "name": "comp229-m2022-lesson3",
+  "version": "0.0.1",
+  "description": "Demo Project for COMP229 in the Summer 2022 semester for Lesson 3",
+  "main": "server.js",
+  "author": "Yuntian Ye",
+  "license": "MIT",
+  "dependencies": {
+    "mime-types": "^2.1.35"
+  }
+}
