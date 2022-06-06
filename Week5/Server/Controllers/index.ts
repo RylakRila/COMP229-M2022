@@ -19,19 +19,3 @@ export function DisplayServicesPage(req: express.Request, res: express.Response,
 export function DisplayContactPage(req: express.Request, res: express.Response, next: express.NextFunction) {
     res.render('index', { title: 'Contact Us', page:'contact' });
 }
-
-/* temporary */
-
-import Movie from '../Models/movie';
-
-export function DisplayMovieList(req: express.Request, res: express.Response, next: express.NextFunction) {
-    Movie.find((err, moviesCollection) => {
-        
-        if(err) {
-            console.error(err);
-            res.end(err);
-        }
-        
-        res.render('index', {title: 'Movie List', page: 'movie-list', movies: moviesCollection});
-    });
-}
