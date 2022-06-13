@@ -8,8 +8,7 @@ const MovieSchema = new Schema({
     Year: String,
     Director: String,
     Rating: String
-},
-{
+}, {
     collection: "movies"
 });
 
