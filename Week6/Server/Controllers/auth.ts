@@ -1,5 +1,4 @@
 import express from 'express';
-import { userInfo } from 'os';
 
 // Need passport functionality
 import passport from 'passport';
@@ -7,13 +6,16 @@ import passport from 'passport';
 // Need to include User Model for Authentication Function
 import User from '../Models/user';
 
+// import the DisplayName utility function
+import { UserDisplayName } from '../Util';
+
 // Display Functions
 export function DisplayLoginPage(req: express.Request, res: express.Response, next: express.NextFunction) {
-    res.render('index', { title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: ''});
+    res.render('index', { title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: UserDisplayName(req)});
 }
 
 export function DisplayRegisterPage(req: express.Request, res: express.Response, next: express.NextFunction) {
-    res.render('index', { title: 'Register', page: 'register', messages: req.flash('registerMessage'), displayName: ''});
+    res.render('index', { title: 'Register', page: 'register', messages: req.flash('registerMessage'), displayName: UserDisplayName(req)});
 }
 
 // Processing Functions
