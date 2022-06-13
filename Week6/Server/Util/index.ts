@@ -1,5 +1,4 @@
 import express from "express";
-import { nextTick } from "process";
 
 // convenience function to return the DisplayName of the User
 export function UserDisplayName(req: express.Request): string {
@@ -10,9 +9,9 @@ export function UserDisplayName(req: express.Request): string {
     return '';
 }
 
-// helper function for guarding secure locations
-export function AuthGuard(req: express.Request, res: express.Response, next: express.NextFunction) {
-    if (!req.isAuthenticated) {
+// helper middleware function for guarding secure locations
+export function AuthGuard(req: express.Request, res: express.Response, next: express.NextFunction): void {
+    if (!req.isAuthenticated()) {
         return res.redirect('/login');
     }
     next();
