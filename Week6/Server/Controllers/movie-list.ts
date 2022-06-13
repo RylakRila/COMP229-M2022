@@ -10,6 +10,6 @@ export function DisplayMovieList(req: express.Request, res: express.Response, ne
             res.end(err);
         }
         
-        res.render('index', {title: 'Movie List', page: 'movie-list', movies: moviesCollection});
+        res.render('index', {title: 'Movie List', page: 'movie-list', movies: moviesCollection, displayName: '' });
     });
 }
