@@ -21,6 +21,14 @@ function DisplayAddPage(req, res, next) {
 }
 exports.DisplayAddPage = DisplayAddPage;
 function DisplayEditPage(req, res, next) {
+    let id = req.params.id;
+    movie_1.default.findById(id, {}, {}, (err, movieToEdit) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        res.render('index', { title: 'Edit', page: 'edit', movie: movieToEdit, displayName: (0, Util_1.UserDisplayName)(req) });
+    });
 }
 exports.DisplayEditPage = DisplayEditPage;
 function ProcessAddPage(req, res, next) {
