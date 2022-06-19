@@ -86,7 +86,7 @@ export function ProcessDeletePage(req: express.Request, res: express.Response, n
             res.end(err);
         }
         
-        //delet was successful
+        //delete was successful
         res.redirect('/movie-list');
-    })
+    });
 }

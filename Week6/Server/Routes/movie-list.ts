@@ -20,6 +20,6 @@ router.post('/add', AuthGuard, ProcessAddPage);
 router.post('/edit/:id', AuthGuard, ProcessEditPage);
 
 /* Process Delete Page */
-router.post('/delete/:id', AuthGuard, ProcessDeletePage);
+router.get('/delete/:id', AuthGuard, ProcessDeletePage);
 
 export default router;

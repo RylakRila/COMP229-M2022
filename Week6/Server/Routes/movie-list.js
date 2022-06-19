@@ -12,6 +12,6 @@ router.get('/add', Util_1.AuthGuard, movie_list_1.DisplayAddPage);
 router.get('/edit/:id', Util_1.AuthGuard, movie_list_1.DisplayEditPage);
 router.post('/add', Util_1.AuthGuard, movie_list_1.ProcessAddPage);
 router.post('/edit/:id', Util_1.AuthGuard, movie_list_1.ProcessEditPage);
-router.post('/delete/:id', Util_1.AuthGuard, movie_list_1.ProcessDeletePage);
+router.get('/delete/:id', Util_1.AuthGuard, movie_list_1.ProcessDeletePage);
 exports.default = router;
 //# sourceMappingURL=movie-list.js.map
