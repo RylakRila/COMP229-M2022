@@ -54,7 +54,25 @@ export function ProcessAddPage(req: express.Request, res: express.Response, next
 }
 
 export function ProcessEditPage(req: express.Request, res: express.Response, next: express.NextFunction): void {
+    let id = req.params.id;
     
+    let updatedMovie = new Movie({
+        "_id": id,
+        "Name": req.body.movieName,
+        "Director": req.body.movieDirector,
+        "Year": req.body.movieYear,
+        "Rating": req.body.movieRating
+    });
+    
+    Movie.updateOne({_id: id}, updatedMovie, (err: ErrorCallback) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        
+        // edit sucessed
+        res.redirect('/movie-list');
+    });
 }
 
 export function ProcessDeletePage(req: express.Request, res: express.Response, next: express.NextFunction): void {
