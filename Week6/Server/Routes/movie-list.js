@@ -8,5 +8,10 @@ const router = express_1.default.Router();
 const Util_1 = require("../Util");
 const movie_list_1 = require("../Controllers/movie-list");
 router.get('/movie-list', Util_1.AuthGuard, movie_list_1.DisplayMovieList);
+router.get('/add', Util_1.AuthGuard, movie_list_1.DisplayAddPage);
+router.get('/edit/:id', Util_1.AuthGuard, movie_list_1.DisplayEditPage);
+router.post('/add', Util_1.AuthGuard, movie_list_1.ProcessAddPage);
+router.post('/edit/:id', Util_1.AuthGuard, movie_list_1.ProcessEditPage);
+router.post('/delete/:id', Util_1.AuthGuard, movie_list_1.ProcessDeletePage);
 exports.default = router;
 //# sourceMappingURL=movie-list.js.map
