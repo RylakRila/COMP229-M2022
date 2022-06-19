@@ -17,6 +17,7 @@ function DisplayMovieList(req, res, next) {
 }
 exports.DisplayMovieList = DisplayMovieList;
 function DisplayAddPage(req, res, next) {
+    res.render('index', { title: 'Add', page: 'edit', movie: '', displayName: (0, Util_1.UserDisplayName)(req) });
 }
 exports.DisplayAddPage = DisplayAddPage;
 function DisplayEditPage(req, res, next) {
