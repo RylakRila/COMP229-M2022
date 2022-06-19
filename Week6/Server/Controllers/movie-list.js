@@ -32,6 +32,19 @@ function DisplayEditPage(req, res, next) {
 }
 exports.DisplayEditPage = DisplayEditPage;
 function ProcessAddPage(req, res, next) {
+    let newMovie = new movie_1.default({
+        "Name": req.body.movieName,
+        "Director": req.body.movieDirector,
+        "Year": req.body.movieYear,
+        "Rating": req.body.movieRating
+    });
+    movie_1.default.create(newMovie, (err) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        res.redirect('/movie-list');
+    });
 }
 exports.ProcessAddPage = ProcessAddPage;
 function ProcessEditPage(req, res, next) {
