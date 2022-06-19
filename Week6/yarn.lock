@@ -125,15 +125,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.36.tgz#c0d5f2fe76b47b63e0e0efc3d2049a9970d68794"
   integrity sha512-V3orv+ggDsWVHP99K3JlwtH20R7J4IhI1Kksgc+64q5VxgfRkQG8Ws3MFm/FZOKDYGy9feGFlZ70/HpCNe9QaA==
 
-"@types/passport-local-mongoose@^6.1.1":
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/@types/passport-local-mongoose/-/passport-local-mongoose-6.1.1.tgz#f92d0b62286e0420ade1159ca3cffab761d3d4f0"
-  integrity sha512-31cSfuCDc0I0OGeQlpns95s5zoPtdVCJApM6ZgvoGWumGjYtfJ+z5SGRLcbL6cqyXn/AuJVz5iVrZp2iVv4yrQ==
-  dependencies:
-    "@types/passport-local" "*"
-    mongoose "^6.3.0"
-
-"@types/passport-local@*", "@types/passport-local@^1.0.34":
+"@types/passport-local@^1.0.34":
   version "1.0.34"
   resolved "https://registry.yarnpkg.com/@types/passport-local/-/passport-local-1.0.34.tgz#84d3b35b2fd4d36295039ded17fe5f3eaa62f4f6"
   integrity sha512-PSc07UdYx+jhadySxxIYWuv6sAnY5e+gesn/5lkPKfBeGuIYn9OPR+AAEDq73VRUh6NBTpvE/iPE62rzZUslog==
@@ -681,7 +673,7 @@ mongodb@4.5.0:
   optionalDependencies:
     saslprep "^1.0.3"
 
-mongoose@*, mongoose@^6.3.0, mongoose@^6.3.5:
+mongoose@*, mongoose@^6.3.5:
   version "6.3.5"
   resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-6.3.5.tgz#2759e7edb544d672bd266fef3e95de9825da2615"
   integrity sha512-Ho3b/MK3lFyb87NjzyVwrjCqQ5DuLsIPSMFYDuZjaIJNhZfHNPQIcUDR1RLZ0/l+uznwo0VBu3WSwdu8EfAZTA==

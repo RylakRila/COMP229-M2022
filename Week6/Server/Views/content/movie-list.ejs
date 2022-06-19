@@ -3,6 +3,8 @@
 <div class="row">
     <div class="col">
         
+        <a href="/add" id="addButton" class="btn btn-primary mb-1"><i class="fa-solid fa-plus-circle"></i> Add Movie</a>
+        
         <table class="table table-striped table-bordered table-hover">
             <thead class="table-dark">
                 <tr>
@@ -24,8 +26,8 @@
                         <td><%= movies[count].Year %></td>
                         <td><%= movies[count].Director %></td>
                         <td><%= movies[count].Rating %></td>
-                        <td></td>
-                        <td></td>
+                        <td class="text-center"><a href="/edit/<%= movies[count]._id %>" class="btn btn-primary btn-sm edit"><i class="fa-solid fa-pen-to-square"></i> Edit</a></td>
+                        <td class="text-center"><a href="/delete/<%= movies[count]._id %>" class="btn btn-danger btn-sm delete"><i class="fa-solid fa-trash-can"></i> Delete</a></td>
                     </tr>
                 <% } %>
             </tbody>
