@@ -66,6 +66,14 @@ function ProcessEditPage(req, res, next) {
 }
 exports.ProcessEditPage = ProcessEditPage;
 function ProcessDeletePage(req, res, next) {
+    let id = req.params.id;
+    movie_1.default.remove({ _id: id }, (err) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        res.redirect('/movie-list');
+    });
 }
 exports.ProcessDeletePage = ProcessDeletePage;
 //# sourceMappingURL=movie-list.js.map

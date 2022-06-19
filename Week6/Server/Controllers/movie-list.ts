@@ -1,4 +1,5 @@
 import express from 'express';
+import { CallbackError } from 'mongoose';
 
 import Movie from '../Models/movie';
 
@@ -43,7 +44,7 @@ export function ProcessAddPage(req: express.Request, res: express.Response, next
     });
     
     // Insert new movie to database
-    Movie.create(newMovie, (err: ErrorCallback) => {
+    Movie.create(newMovie, (err: CallbackError) => {
         if (err) {
             console.error(err);
             res.end(err);
@@ -64,7 +65,7 @@ export function ProcessEditPage(req: express.Request, res: express.Response, nex
         "Rating": req.body.movieRating
     });
     
-    Movie.updateOne({_id: id}, updatedMovie, (err: ErrorCallback) => {
+    Movie.updateOne({_id: id}, updatedMovie, (err: CallbackError) => {
         if (err) {
             console.error(err);
             res.end(err);
@@ -76,5 +77,16 @@ export function ProcessEditPage(req: express.Request, res: express.Response, nex
 }
 
 export function ProcessDeletePage(req: express.Request, res: express.Response, next: express.NextFunction): void {
+    let id = req.params.id;
     
+    // pass the id to the database and delete that movie
+    Movie.remove({_id: id}, (err: CallbackError) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        
+        //delet was successful
+        res.redirect('/movie-list');
+    })
 }
