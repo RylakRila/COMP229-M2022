@@ -15,6 +15,11 @@ import flash from 'connect-flash';
 
 // modules for JWT Support
 import cors from 'cors';
+import passportJWT from 'passport-jwt';
+
+// define JWT Alias
+let JWTStrategy = passportJWT.Strategy;
+let ExtractJWT = passportJWT.ExtractJwt;
 
 // Step 2 for auth - alias our auth objects
 let localStrategy = passportLocal.Strategy;
@@ -30,6 +35,7 @@ const app = express();
 
 // Complete the DB Configuration
 import * as DBConfig from './db';
+import { userInfo } from 'os';
 mongoose.connect(DBConfig.RemoteURI || DBConfig.LocalURI);
 const db = mongoose.connection; // alias for mongoose connection
 
@@ -75,6 +81,25 @@ passport.use(User.createStrategy());
 // Step 8 - setup serilization and deserilization (encoding and decoding)
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+// setup JWT Options
+let jwtOptions = {
+  jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+  secretOrKey: DBConfig.Secret
+};
+
+// setup JWT Strategy
+let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) => {
+  User.findById(jwt_payload.id)
+  .then(user => {
+    return done(null, user);
+  })
+  .catch(err => {
+    return done(err, false);
+  });
+});
+
+passport.use(strategy);
 
 // use routes
 app.use('/api', movieListRouter);
