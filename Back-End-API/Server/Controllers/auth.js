@@ -61,7 +61,7 @@ function ProcessLogoutPage(req, res, next) {
         }
         console.log("User logged out");
     });
-    res.redirect('/login');
+    res.json({ success: true, msg: 'User Logged out Successfully!' });
 }
 exports.ProcessLogoutPage = ProcessLogoutPage;
 //# sourceMappingURL=auth.js.map
