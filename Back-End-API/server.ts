@@ -10,9 +10,8 @@ import debug from 'debug';
 debug('week4:server');
 import http from 'http';
 import { HttpError } from 'http-errors';
-import { AddressInfo } from 'net';
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '3500');
 app.set('port', port);
 
 const server = http.createServer(app);
