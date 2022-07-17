@@ -6,6 +6,8 @@ import passport from 'passport';
 // Need to include User Model for Authentication Function
 import User from '../Models/user'; 
 
+import { GenerateToken } from '../Util';
+
 // Processing Functions
 export function ProcessLoginPage(req: express.Request, res: express.Response, next: express.NextFunction) {
     passport.authenticate('local', (err, user, info) => {
@@ -17,8 +19,7 @@ export function ProcessLoginPage(req: express.Request, res: express.Response, ne
         
         //are there login errors?
         if (!user) {
-            req.flash('loginMessage', 'Authentication Error!');
-            return res.redirect('/login');
+            return res.json({sucess: false, msg: 'ERROR: Authentication Error'})
         }
         
         // no problems - we have right username and password
@@ -29,8 +30,17 @@ export function ProcessLoginPage(req: express.Request, res: express.Response, ne
                 res.end(err);
             }
             
-            return res.redirect('/movie-list');
+            const authToken = GenerateToken(user);
+            
+            return res.json({success: true, msg: 'User Logged In Successfully!', user: {
+                id: user._id,
+                DisplayName: user.DisplayName,
+                username: user.username,
+                EmailAddress: user.EmailAddress
+            }, token: authToken});
         });
+        
+        return;
     })(req, res, next);
 }
 
