@@ -11,6 +11,7 @@ import About from './content/about';
 import Projects from './content/projects';
 import Services from './content/services';
 import Contact from './content/contact';
+import PageNotFound from './content/PageNotFound';
 
 // Style and Fonts
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -31,6 +32,7 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
         
         <Footer></Footer>
