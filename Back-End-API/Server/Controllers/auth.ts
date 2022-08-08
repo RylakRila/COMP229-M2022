@@ -19,7 +19,7 @@ export function ProcessLoginPage(req: express.Request, res: express.Response, ne
         
         //are there login errors?
         if (!user) {
-            return res.json({sucess: false, msg: 'ERROR: Authentication Error'})
+            return res.json({sucess: false, message: 'ERROR: Authentication Error'})
         }
         
         // no problems - we have right username and password
@@ -32,7 +32,7 @@ export function ProcessLoginPage(req: express.Request, res: express.Response, ne
             
             const authToken = GenerateToken(user);
             
-            return res.json({success: true, msg: 'User Logged In Successfully!', user: {
+            return res.json({success: true, message: 'User Logged In Successfully!', user: {
                 id: user._id,
                 DisplayName: user.DisplayName,
                 username: user.username,
@@ -60,12 +60,12 @@ export function ProcessRegisterPage(req: express.Request, res: express.Response,
             } else {
                 console.error(err.name); // other error
             }
-            return res.json({success: false, msg: 'ERROR: Registration Failed!  '})
+            return res.json({success: false, message: 'ERROR: Registration Failed!  '})
         }
         
         //everything fine
         
-        return res.json({success: true, msg: 'User Registered Successfully!'});
+        return res.json({success: true, message: 'User Registered Successfully!'});
     });
 }
 
@@ -78,5 +78,5 @@ export function ProcessLogoutPage(req: express.Request, res: express.Response, n
         console.log("User logged out")
     });
     
-    res.json({success: true, msg: 'User Logged out Successfully!'});
+    res.json({success: true, message: 'User Logged out Successfully!'});
 }

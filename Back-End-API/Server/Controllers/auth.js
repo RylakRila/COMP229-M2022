@@ -14,7 +14,7 @@ function ProcessLoginPage(req, res, next) {
             res.end(err);
         }
         if (!user) {
-            return res.json({ sucess: false, msg: 'ERROR: Authentication Error' });
+            return res.json({ sucess: false, message: 'ERROR: Authentication Error' });
         }
         req.logIn(user, (err) => {
             if (err) {
@@ -22,7 +22,7 @@ function ProcessLoginPage(req, res, next) {
                 res.end(err);
             }
             const authToken = (0, Util_1.GenerateToken)(user);
-            return res.json({ success: true, msg: 'User Logged In Successfully!', user: {
+            return res.json({ success: true, message: 'User Logged In Successfully!', user: {
                     id: user._id,
                     DisplayName: user.DisplayName,
                     username: user.username,
@@ -47,9 +47,9 @@ function ProcessRegisterPage(req, res, next) {
             else {
                 console.error(err.name);
             }
-            return res.json({ success: false, msg: 'ERROR: Registration Failed!  ' });
+            return res.json({ success: false, message: 'ERROR: Registration Failed!  ' });
         }
-        return res.json({ success: true, msg: 'User Registered Successfully!' });
+        return res.json({ success: true, message: 'User Registered Successfully!' });
     });
 }
 exports.ProcessRegisterPage = ProcessRegisterPage;
@@ -61,7 +61,7 @@ function ProcessLogoutPage(req, res, next) {
         }
         console.log("User logged out");
     });
-    res.json({ success: true, msg: 'User Logged out Successfully!' });
+    res.json({ success: true, message: 'User Logged out Successfully!' });
 }
 exports.ProcessLogoutPage = ProcessLogoutPage;
 //# sourceMappingURL=auth.js.map

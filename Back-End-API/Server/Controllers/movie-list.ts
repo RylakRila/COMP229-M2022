@@ -15,12 +15,12 @@ export function DisplayMovieList(req: express.Request, res: express.Response, ne
         
         // res.render('index', {title: 'Movie List', page: 'movie-list', movies: moviesCollection, displayName: UserDisplayName(req) });
         
-        res.json({success: true, msg: 'Movie-List Displayed Successfully', movies: moviesCollection, user: req.user});
+        res.json({success: true, message: 'Movie-List Displayed Successfully', movies: moviesCollection, user: req.user});
     });
 }
 
 export function DisplayAddPage(req: express.Request, res: express.Response, next: express.NextFunction): void {
-    res.json({success: true, msg: 'Add Page Displayed Successfully'});
+    res.json({success: true, message: 'Add Page Displayed Successfully'});
 }
 
 export function DisplayEditPage(req: express.Request, res: express.Response, next: express.NextFunction): void {
@@ -33,7 +33,7 @@ export function DisplayEditPage(req: express.Request, res: express.Response, nex
             res.end(err);
         }
         
-        res.json({success: true, msg: 'Edit Page Displayed Successfully', movies: movieToEdit});
+        res.json({success: true, message: 'Edit Page Displayed Successfully', movies: movieToEdit});
     });
 }
 
@@ -52,7 +52,7 @@ export function ProcessAddPage(req: express.Request, res: express.Response, next
             res.end(err);
         }
         
-        res.json({success: true, msg: 'Successfully Added Movie', movie: newMovie});
+        res.json({success: true, message: 'Successfully Added Movie', movie: newMovie});
     });
 }
 
@@ -74,7 +74,7 @@ export function ProcessEditPage(req: express.Request, res: express.Response, nex
         }
         
         // edit sucessed
-        res.json({success: true, msg: 'Successfully Edited Movie', movie: updatedMovie});
+        res.json({success: true, message: 'Successfully Edited Movie', movie: updatedMovie});
     });
 }
 
@@ -89,6 +89,6 @@ export function ProcessDeletePage(req: express.Request, res: express.Response, n
         }
         
         //delete was successful
-        res.json({success: true, msg: 'Successfully Deleted Movie'});
+        res.json({success: true, message: 'Successfully Deleted Movie'});
     });
 }
