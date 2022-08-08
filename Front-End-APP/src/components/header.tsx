@@ -7,7 +7,7 @@ function Header() {
     
     useEffect(() => {
         setIsLoggedIn(AuthService.getCurrentUser());
-    });
+    }, []);
     
     function toggleLogin() {
         if (isLoggedIn) {

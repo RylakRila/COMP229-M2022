@@ -7,6 +7,7 @@ function Login() {
     
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
     const navigate = useNavigate() // alias
     
     useEffect(() => {
@@ -19,6 +20,16 @@ function Login() {
     
     function onChangePassword(event: ChangeEvent<HTMLInputElement>) {
         setPassword(event.target.value);
+    }
+    
+    function handleMessage() {
+        if (message.length > 0) {
+            return(
+            <div id="messageArea" className="alert alert-danger">
+                { message }
+            </div>  
+            );
+        }
     }
     
     function handleLogin(event: any) {
@@ -35,13 +46,29 @@ function Login() {
         
         // use the auth service to perform login
         AuthService.login(UserData.username, UserData.password)
-        .then(() => {
-            // navigate to the movie-list page
-            navigate('/home');
+        .then((data) => {
+            if (data.success) {
+                navigate('/home');
+                window.location.reload();
+            } else {
+                setMessage(data.message);
+                clearForm(null);
+            }
+            
         }, error => {
-            // TODO needs a replacement for flash messaging
+            setMessage("Server Error");
             window.location.reload();   
         });
+    }
+    
+    function clearForm(event: any) {
+        setUsername('');
+        setPassword('');
+    }
+    
+    function handleReset(event: any) {
+        clearForm(event);
+        setMessage('');
     }
     
     return (
@@ -51,7 +78,9 @@ function Login() {
                 <div className="login" id="contentArea">
                     <h1 className="display-4">Login</h1>
                     
-                    <form onSubmit={handleLogin} id="loginForm">
+                    { handleMessage() }
+                    
+                    <form onSubmit={ handleLogin } onReset = { handleReset } id="loginForm" noValidate>
                         <div className="form-group mb-2">
                             <div className="input-group">
                                 <span className="input-group-addon">
