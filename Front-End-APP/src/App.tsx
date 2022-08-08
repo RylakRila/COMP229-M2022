@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 // Common Components
@@ -16,13 +16,17 @@ import PageNotFound from './content/PageNotFound';
 // Authentication Components
 import Login from './authentication/login';
 import Logout from './authentication/logout';
+import Register from './authentication/register';
 
 // Style and Fonts
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css';
 
-function App() {  
+
+function App() {
+  const [ isLoggedIn, setIsLoggedIn ] = useState(false);
+  
   return (
     <div className="App">
       <BrowserRouter>
@@ -37,6 +41,7 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
