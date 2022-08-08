@@ -10,6 +10,7 @@ function Register() {
     const [ FirstName, setFirstName ] = useState('');
     const [ LastName, setLastName ] = useState('');
     const [ EmailAddress, setEmailAddress ] = useState('');
+    const [message, setMessage] = useState('');
     const navigate = useNavigate(); // alias
     
     useEffect(() => {
@@ -40,6 +41,30 @@ function Register() {
         setEmailAddress(event.target.value);
     }
     
+    function handleMessage() {
+        if (message.length > 0) {
+            return(
+            <div id="messageArea" className="alert alert-danger">
+                { message }
+            </div>  
+            );
+        }
+    }
+    
+    function clearForm(event: any) {
+        setUsername('');
+        setPassword('');
+        setConfirmPassword('');
+        setFirstName('');
+        setLastName('');
+        setEmailAddress('');
+    }
+    
+    function handleReset(event: any) {
+        clearForm(event);
+        setMessage('');
+    }
+    
     function handleRegister(event: any) {
         event.preventDefault();
         const UserData: UserModel = {
@@ -51,10 +76,16 @@ function Register() {
         }
         
         AuthService.register(UserData.username, UserData.password, UserData.FirstName, UserData.LastName, UserData.EmailAddress)
-        .then(() => {
-            navigate('/login');
+        .then((data) => {
+            if (data.success) {
+                navigate('/login');
+                window.location.reload();
+            } else {
+                setMessage(data.message);
+                clearForm(null);
+            }
         }, error => {
-            window.location.reload();
+            setMessage("Server Error!");
         });
     }
     
@@ -64,8 +95,10 @@ function Register() {
                 <div className="offset-md-3 col-md-6 col-sm-12">
                     <div className="login" id="contentArea">
                         <h1 className="display-4">Register</h1>
-            
-                        <form onSubmit={ handleRegister } id="registerForm">
+                        
+                        { handleMessage() }
+                        
+                        <form onSubmit={ handleRegister } onReset = { handleReset } id="registerForm" noValidate>
                             <p className="hint-text">Create your own account. It's free and only takes a minute.</p>
             
                             <div className="form-group">
