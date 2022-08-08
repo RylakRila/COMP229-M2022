@@ -40,9 +40,9 @@
                         <a class="nav-link" aria-current="page" href="/logout"><i class="fa-solid fa-right-from-bracket fa-lg"></i> Logout</a>
                     </li>
                     
-                <% } else { %>  
+                <NavLink% } else { %>  
                     <li class="nav-item">
-                        <a class="nav-link <%= (page == 'login') ? 'active' : ''; %>" aria-current="page" href="/login"><i class="fa-solid fa-right-to-bracket fa-lg"></i> Login</a>
+                        <NavLink class="nav-link <%= (page == 'login') ? 'active' : ''; %>" aria-current="page" href="/login"><i class="fa-solid fa-right-to-bracket fa-lg"></i> Login</NavLink>
                     </li>
                 <% } %>
             </ul>

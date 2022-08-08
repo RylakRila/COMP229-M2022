@@ -34,8 +34,7 @@ import authRouter from '../Routes/auth';
 const app = express();
 
 // Complete the DB Configuration
-import * as DBConfig from './db';
-import { userInfo } from 'os';
+import * as DBConfig from './db'; 
 mongoose.connect(DBConfig.RemoteURI || DBConfig.LocalURI);
 const db = mongoose.connection; // alias for mongoose connection
 

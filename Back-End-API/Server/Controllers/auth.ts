@@ -46,10 +46,11 @@ export function ProcessLoginPage(req: express.Request, res: express.Response, ne
 
 export function ProcessRegisterPage(req: express.Request, res: express.Response, next: express.NextFunction) {
     // instantiate a new user object
-    let newUser = new User({
+    let newUser = new User
+    ({
         username: req.body.username,
         EmailAddress: req.body.emailAddress,
-        DisplayName: req.body.firstname + ' ' + req.body.lastname
+        DisplayName: req.body.firstName + ' ' + req.body.lastName
     });
     
     User.register(newUser, req.body.password, (err) => {

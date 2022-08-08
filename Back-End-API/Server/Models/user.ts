@@ -1,5 +1,5 @@
 // Step 1 - import mongoose
-import mongoose, { Mongoose, PassportLocalSchema } from "mongoose";
+import mongoose, { PassportLocalSchema } from "mongoose";
 const Schema = mongoose.Schema;
 import passportLocalMongoose from 'passport-local-mongoose';
 
