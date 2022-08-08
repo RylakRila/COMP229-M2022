@@ -48,7 +48,7 @@ function Login() {
         AuthService.login(UserData.username, UserData.password)
         .then((data) => {
             if (data.success) {
-                navigate('/home');
+                navigate('/movie-list');
                 window.location.reload();
             } else {
                 setMessage(data.message);
