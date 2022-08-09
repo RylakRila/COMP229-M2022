@@ -63,7 +63,7 @@ function MovieList() {
                                     <td>{ movie.Year }</td>
                                     <td>{ movie.Director }</td>
                                     <td>{ movie.Rating }</td>
-                                    <td className="text-center"><Link to={'/edit/${movie._id}'} className="btn btn-primary btn-sm edit"><i className="fa-solid fa-pen-to-square"></i> Edit</Link></td>
+                                    <td className="text-center"><Link to={`/edit/${movie._id}`} className="btn btn-primary btn-sm edit"><i className="fa-solid fa-pen-to-square"></i> Edit</Link></td>
                                     <td className="text-center"><button onClick={() => {
                                         confirmDelete(movie._id);
                                     }} className="btn btn-danger btn-sm delete"><i className="fa-solid fa-trash-can"></i> Delete</button></td>

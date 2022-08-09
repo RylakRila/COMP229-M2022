@@ -21,6 +21,7 @@ import AuthGuard from './authentication/AuthGuard';
 
 // Movie List Components
 import MovieList from './movie-list/movie-list';
+import AddMovie from './movie-list/add';
 
 // Style and Fonts
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -45,7 +46,10 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
+          
           <Route path="/movie-list" element={<AuthGuard><MovieList /></AuthGuard>} />
+          <Route path="/add" element={<AuthGuard><AddMovie /></AuthGuard>} />
+          
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/logout" element={<Logout />} />
