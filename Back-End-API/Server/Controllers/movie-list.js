@@ -26,7 +26,7 @@ function DisplayEditPage(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        res.json({ success: true, message: 'Edit Page Displayed Successfully', movies: movieToEdit });
+        res.json({ success: true, message: 'Edit Page Displayed Successfully', movie: movieToEdit });
     });
 }
 exports.DisplayEditPage = DisplayEditPage;

@@ -33,7 +33,7 @@ export function DisplayEditPage(req: express.Request, res: express.Response, nex
             res.end(err);
         }
         
-        res.json({success: true, message: 'Edit Page Displayed Successfully', movies: movieToEdit});
+        res.json({success: true, message: 'Edit Page Displayed Successfully', movie: movieToEdit});
     });
 }
 
