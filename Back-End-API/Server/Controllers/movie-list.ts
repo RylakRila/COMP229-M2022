@@ -39,10 +39,10 @@ export function DisplayEditPage(req: express.Request, res: express.Response, nex
 
 export function ProcessAddPage(req: express.Request, res: express.Response, next: express.NextFunction): void {
     let newMovie = new Movie({
-        "Name": req.body.movieName,
-        "Director": req.body.movieDirector,
-        "Year": req.body.movieYear,
-        "Rating": req.body.movieRating
+        "Name": req.body.Name,
+        "Director": req.body.Director,
+        "Year": req.body.Year,
+        "Rating": req.body.Rating
     });
     
     // Insert new movie to database
@@ -61,10 +61,10 @@ export function ProcessEditPage(req: express.Request, res: express.Response, nex
     
     let updatedMovie = new Movie({
         "_id": id,
-        "Name": req.body.movieName,
-        "Director": req.body.movieDirector,
-        "Year": req.body.movieYear,
-        "Rating": req.body.movieRating
+        "Name": req.body.Name,
+        "Director": req.body.Director,
+        "Year": req.body.Year,
+        "Rating": req.body.Rating
     });
     
     Movie.updateOne({_id: id}, updatedMovie, (err: CallbackError) => {
